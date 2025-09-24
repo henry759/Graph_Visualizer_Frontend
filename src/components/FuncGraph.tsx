@@ -36,7 +36,7 @@ const FuncGraph = ({ step }: FunctionGraphProps) => {
   };
 
   return (
-    <div className="w-full h-[auto] rounded-xl bg-gray-900 p-5">
+    <div className="w-full h-full rounded-xl bg-gray-900 p-5">
       <Line data={funcData} />
     </div>
   )

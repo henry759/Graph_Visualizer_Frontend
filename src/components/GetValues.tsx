@@ -14,7 +14,7 @@ const GetValues = () => {
   }
 
   return (
-    <div className="w-full h-auto bg-gray-800 shadow-2xl shadow-graph-shadow/40 flex flex-col-reverse md:flex-row items-center justify-between mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
+    <div className="w-full h-[70vh] bg-gray-800 shadow-2xl shadow-graph-shadow/40 flex flex-col-reverse md:flex-col-reverse items-center justify-center mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
       <div className="rounded-xl px-10 py-10">
         <label>
           <h2>Step:</h2>
@@ -22,7 +22,7 @@ const GetValues = () => {
         </label>
 
       </div>
-      <div className="w-auto h-auto">
+      <div className="w-full h-full">
         <FuncGraph step={stepper} />
       </div>
     </div>
