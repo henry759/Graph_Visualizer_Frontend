@@ -21,7 +21,7 @@ const generateData = (func: (x: number) => number, xRange: [number, number], ste
 }
 
 const FuncGraph = ({ step }: FunctionGraphProps) => {
-  const { labels, yValues } = generateData((x) => x * x + 2 * x, [-10, 10], step);
+  const { labels, yValues } = generateData((x) => Math.sin(x), [-10, 10], step);
 
   const funcData = {
     labels,
@@ -36,7 +36,7 @@ const FuncGraph = ({ step }: FunctionGraphProps) => {
   };
 
   return (
-    <div className="w-full h-[70vh] container rounded-4xl bg-sky-700">
+    <div className="w-full h-[70vh] container rounded-xl bg-gray-900 p-5">
       <Line data={funcData} />
     </div>
   )

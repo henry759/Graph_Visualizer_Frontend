@@ -8,14 +8,14 @@ const GetValues = () => {
 
   function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
     const stepValue = parseFloat(e.target.value);
-    if (!isNaN(stepValue) && stepValue <= 1 && stepValue >= 0.01) {
+    if (!isNaN(stepValue) && stepValue <= 2 && stepValue >= 0.01) {
       setStepper(stepValue);
     }
   }
 
   return (
-    <div className="w-full container h-auto bg-sky-700 flex items-center justify-between mt-10 rounded-3xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
-      <div>
+    <div className="w-full h-auto bg-gray-800 shadow-2xl shadow-graph-shadow/40 flex items-center justify-center mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
+      <div className="rounded-xl px-10">
         <input value={stepper} step="0.01" onChange={handleChangeInput} type="number" className="text-xl text-gray-900 bg-sky-100 outline-none border-none" />
       </div>
       <div className="w-full h-full">
