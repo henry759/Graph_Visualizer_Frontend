@@ -14,11 +14,15 @@ const GetValues = () => {
   }
 
   return (
-    <div className="w-full h-auto bg-gray-800 shadow-2xl shadow-graph-shadow/40 flex items-center justify-center mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
-      <div className="rounded-xl px-10">
-        <input value={stepper} step="0.01" onChange={handleChangeInput} type="number" className="text-xl text-gray-900 bg-sky-100 outline-none border-none" />
+    <div className="w-full h-auto bg-gray-800 shadow-2xl shadow-graph-shadow/40 flex flex-col-reverse md:flex-row items-center justify-between mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
+      <div className="rounded-xl px-10 py-10">
+        <label>
+          <h2>Step:</h2>
+          <input value={stepper} step="0.01" onChange={handleChangeInput} type="number" className="graph-input" />
+        </label>
+
       </div>
-      <div className="w-full h-full">
+      <div className="w-auto h-auto">
         <FuncGraph step={stepper} />
       </div>
     </div>
