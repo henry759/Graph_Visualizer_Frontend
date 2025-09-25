@@ -5,12 +5,24 @@
   --foreground: #171717;
   --graph-shadow-variable: #398F94;
   --graph-line-color-variable: #4BC0C0;
-  --graph-input-bg-color-variable: #436b6b;
+  /* --graph-input-bg-color-variable: #436b6b; */
+  --graph-input-bg-color-variable: hsl(193, 20%, 12%);
   --graph-input-header-color-variable: #71d2dd;
   --graph-shadow-variable-crimson: rgba(200, 33, 100, 1);
   --main-bg: conic-gradient(at 0% 100%, hsl(347, 64%, 51%) 10%, hsl(221, 69%, 51%) 30%);
+  --main-header-font: "FancyFontOne";
   /* --main-bg: conic-gradient(from 0deg at 50% 20%, hsl(347, 64%, 11%) 10%, hsl(221, 69%, 51%) 100%); */
   /* radial-gradient(circle, crimson 0%, cyan 100%); */
+}
+
+@font-face {
+  font-family: GridFont;
+  src: url(/assets/fonts/Compass.ttf);
+}
+
+@font-face {
+  font-family: FancyFontOne;
+  src: url(/assets/fonts/Mast.ttf);
 }
 
 @theme inline {
@@ -21,6 +33,7 @@
   --font-mono: var(--font-geist-mono);
   --color-graph-shadow: var(--graph-shadow-variable);
   --color-graph-shadow-crimson: var(--graph-shadow-variable-crimson);
+  --font-main: var(--main-header-font);
 }
 
 @media (prefers-color-scheme: dark) {

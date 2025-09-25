@@ -2,27 +2,32 @@
 
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale } from "chart.js";
+import { evaluate, compile } from "mathjs";
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale);
 
 type FunctionGraphProps = {
   step: number;
   xRange: [number, number];
+  expr: string;
+  theXVal: number;
 }
 
-const generateData = (func: (x: number) => number, xRange: [number, number], step: number) => {
+const generateData = (theXVal: number, expr: string, xRange: [number, number], step: number) => {
   const [start, end] = xRange;
   const labels = [];
   const yValues = [];
+
   for (let i = start; i < end; i += step) {
     labels.push(i.toFixed());
-    yValues.push(func(i));
+    const y = compile(expr).evaluate({ theXVal });
+    yValues.push(y);
   }
   return { labels, yValues };
 }
 
-const FuncGraph = ({ step, xRange }: FunctionGraphProps) => {
-  const { labels, yValues } = generateData((x) => Math.sin(x), xRange, step);
+const FuncGraph = ({ step, xRange, expr, theXVal }: FunctionGraphProps) => {
+  const { labels, yValues } = generateData(theXVal, expr, xRange, step);
   const options = {
     scales: {
       y: {
