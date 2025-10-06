@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale } from "chart.js";
@@ -17,16 +17,17 @@ const generateData = (theXVal: number, expr: string, xRange: [number, number], s
   const [start, end] = xRange;
   const labels = [];
   const yValues = [];
+  const compiled = compile(expr);
 
-  for (let i = start; i < end; i += step) {
-    labels.push(i.toFixed());
-    const y = compile(expr).evaluate({ theXVal });
+  for (let x = start; x <= end; x += step) {
+    labels.push(x.toFixed(2));
+    const y = compiled.evaluate({ x });
     yValues.push(y);
   }
   return { labels, yValues };
 }
 
-const FuncGraph = ({ step, xRange, expr, theXVal }: FunctionGraphProps) => {
+const FuncGraph = ({ theXVal, step, xRange, expr }: FunctionGraphProps) => {
   const { labels, yValues } = generateData(theXVal, expr, xRange, step);
   const options = {
     scales: {
