@@ -56,12 +56,12 @@ const GetValues = () => {
 
   return (
     <div className="w-full h-[auto] _bg-gray-800 _shadow-2xl _shadow-black/70 flex flex-col items-center justify-center mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
-      <div className="flex justify-center max-w-min">
-        <div className="text-xl px-4 py-2 rounded-xl border-[1px] rounded-b-none border-b-0 border-gray-600 bg-black/50">
-          {/* <input type="range" value={theX} onChange={handleXChange} /> */}
+      <div className="flex justify-center">
+        <div className="text-[1rem] px-4 py-2 rounded-xl border-[1px] rounded-b-none border-b-0 border-gray-600 bg-black/50">
+          <span className="mr-2 px-2 py-2 rounded-full bg-conic-120 from-blue-700 to-violet-600">ƒx</span>
           <input className="placeholder:text-[0.8rem] md:placeholder:text-[1rem] border-0 outline-none rounded-xl rounded-r-none" type="text" placeholder="Write your function for see as Graph" value={funcExp} onChange={handleExpChange} />
         </div>
-        <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer text-xs md:text-[1rem] border-0 outline-none px-7 py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
+        <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer text-xs md:text-[1rem] border-0 outline-none px-4 py-2 md:px-7 md:py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
       </div>
       <div className="w-full h-full shadow-xl shadow-black/80">
         <FuncGraph step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
@@ -73,17 +73,26 @@ const GetValues = () => {
         {/* Stepper and range Wrapper */}
         <div className="w-full flex gap-x-10 flex-col xl:flex-row items-center justify-between">
           <label className="w-full">
-            <h2 className="graph-input-header"><code>Step:</code></h2>
+            <h2 className="graph-input-header text-xs md:text-[1rem]"><code>Step:</code></h2>
             {/* step is inside of input */}
             <input value={stepper} step="0.02" onChange={handleChangeStepperInput} type="range" min={0.3} max={5} className="graph-input w-full text-white accent-rose-300" />
           </label>
 
-          <label className="w-full">
-            <h2 className="graph-input-header"><code>Range [Start - End]</code></h2>
-            <input value={rangeStart} step="1" onChange={handleChangeRangeStartInput} type="range" min={-50} max={0} className="graph-input accent-rose-500" />
-            <span className="px-4">----</span>
-            <input value={rangeEnd} step="1" onChange={handleChangeRangeEndInput} type="range" min={0} max={50} className="graph-input accent-rose-500" />
-          </label>
+          <div className="w-full flex flex-col items-center justify-center">
+            <h2 className="graph-input-header w-full text-xs md:text-[1rem]"><code>Range [Start - End]</code></h2>
+            <label className="flex flex-col gap-y-3 md:flex-row flex-wrap justify-center items-center w-full">
+              <div className="flex flex-row w-full gap-x-3 xl:gap-x-7 justify-center items-center">
+                <span className="whitespace-nowrap text-xs">min: -50</span>
+                <input value={rangeStart} step="1" onChange={handleChangeRangeStartInput} type="range" min={-50} max={0} className="graph-input w-full accent-rose-500" />
+                <span className="whitespace-nowrap text-xs">max: <strong>0</strong></span>
+              </div>
+              <div className="flex flex-row w-full gap-x-3 xl:gap-x-7 justify-center items-center">
+                <span className="whitespace-nowrap text-xs">min: <strong>0</strong></span>
+                <input value={rangeEnd} step="1" onChange={handleChangeRangeEndInput} type="range" min={0} max={50} className="graph-input w-full accent-rose-500" />
+                <span className="whitespace-nowrap text-xs">max: 50</span>
+              </div>
+            </label>
+          </div>
         </div>
       </div>
       <div className="w-full h-auto mt-10">

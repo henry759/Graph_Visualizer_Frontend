@@ -62,7 +62,6 @@ button {
 .graph-input {
   border: none;
   outline: none;
-  padding: 1ch 2ch;
   border-radius: 0.3rem;
   background-color: var(--graph-input-bg-color-variable);
   font-size: 0.9rem;
@@ -75,8 +74,6 @@ button {
 }
 
 .graph-input-header {
-  font-size: 1rem;
-  font-weight: bold;
   margin-bottom: 0.4rem;
   border-bottom: 1px solid hsl(193, 20%, 55%);
   color: var(--graph-input-header-color-variable);
