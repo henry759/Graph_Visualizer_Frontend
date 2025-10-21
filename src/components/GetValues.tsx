@@ -56,19 +56,19 @@ const GetValues = () => {
 
   return (
     <div className="w-full h-[auto] _bg-gray-800 _shadow-2xl _shadow-black/70 flex flex-col items-center justify-center mt-10 rounded-xl _hover:shadow-2xl _hover:shadow-sky-950 transition-shadow duration-300">
-      <div className="flex justify-start w-full">
+      <div className="flex justify-center max-w-min">
         <div className="text-xl px-4 py-2 rounded-xl border-[1px] rounded-b-none border-b-0 border-gray-600 bg-black/50">
           {/* <input type="range" value={theX} onChange={handleXChange} /> */}
-          <input className="placeholder:text-[1rem] border-0 outline-none rounded-xl rounded-r-none" type="text" placeholder="Write your function for see as Graph" value={funcExp} onChange={handleExpChange} />
+          <input className="placeholder:text-[0.8rem] md:placeholder:text-[1rem] border-0 outline-none rounded-xl rounded-r-none" type="text" placeholder="Write your function for see as Graph" value={funcExp} onChange={handleExpChange} />
         </div>
-        <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer border-0 outline-none px-7 py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
+        <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer text-xs md:text-[1rem] border-0 outline-none px-7 py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
       </div>
       <div className="w-full h-full shadow-xl shadow-black/80">
         <FuncGraph step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
       </div>
       <div className="shadow-2xl shadow-black/70 w-full flex flex-col items-center justify-between rounded-xl rounded-t-none border-[1px] border-slate-800 px-10 py-10 bg-black/50 backdrop-blur-[10px]">
         {/* Get Length Between Points as an input float number  */}
-        <h1 className="w-full text-xl text-center mb-7 border-b-2 border-b-slate-500 py-4"><code className="bg-violet-700 rounded-xl px-5 py-2">Utilities 🔨</code></h1>
+        <h1 className="w-full text-[0.8rem] md:text-[1rem] text-center mb-7 border-b-2 border-b-slate-500 py-4"><code className="bg-violet-700 rounded-xl px-5 py-2">Utilities 🔨</code></h1>
 
         {/* Stepper and range Wrapper */}
         <div className="w-full flex gap-x-10 flex-col xl:flex-row items-center justify-between">
