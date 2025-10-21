@@ -68,6 +68,6 @@ body {
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.4rem;
-  border-bottom: 1px solid lightcyan;
+  border-bottom: 1px solid hsl(193, 20%, 55%);
   color: var(--graph-input-header-color-variable);
 }

@@ -21,8 +21,12 @@ const generateData = (theXVal: number, expr: string, xRange: [number, number], s
 
   for (let x = start; x <= end; x += step) {
     labels.push(x.toFixed(2));
-    const y = compiled.evaluate({ x });
-    yValues.push(y);
+    try {
+      const y = compiled.evaluate({ x });
+      yValues.push(y);
+    } catch (err) {
+      console.error(err);
+    }
   }
   return { labels, yValues };
 }
@@ -47,10 +51,11 @@ const FuncGraph = ({ theXVal, step, xRange, expr }: FunctionGraphProps) => {
   };
 
   const funcData = {
+    type: 'line',
     labels,
     datasets: [
       {
-        label: "f(x) = sin(x)",
+        label: "f(x)",
         data: yValues,
         borderColor: "rgba(75,192,192,1)",
         backgroundColor: "rgba(200, 255, 255, 1)",
