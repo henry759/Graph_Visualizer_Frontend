@@ -59,16 +59,16 @@ const GetValues = () => {
       <div className="flex justify-start w-full">
         <div className="text-xl px-4 py-2 rounded-xl border-[1px] rounded-b-none border-b-0 border-gray-600 bg-black/50">
           {/* <input type="range" value={theX} onChange={handleXChange} /> */}
-          <input className="border-0 outline-none rounded-xl rounded-r-none" type="text" value={funcExp} onChange={handleExpChange} />
+          <input className="placeholder:text-[1rem] border-0 outline-none rounded-xl rounded-r-none" type="text" placeholder="Write your function for see as Graph" value={funcExp} onChange={handleExpChange} />
         </div>
-        <button onClick={() => calculateFunction(funcExp)} className="border-0 outline-none px-7 py-3 rounded-xl rounded-b-none rounded-tl-none bg-cyan-900"><code><strong>🖩 Calculate</strong></code></button>
+        <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer border-0 outline-none px-7 py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
       </div>
       <div className="w-full h-full shadow-xl shadow-black/80">
         <FuncGraph step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
       </div>
       <div className="shadow-2xl shadow-black/70 w-full flex flex-col items-center justify-between rounded-xl rounded-t-none border-[1px] border-slate-800 px-10 py-10 bg-black/50 backdrop-blur-[10px]">
         {/* Get Length Between Points as an input float number  */}
-        <h1 className="w-full text-xl text-center mb-7 border-b-2 border-b-slate-500 py-4"><code className="bg-cyan-900 rounded-xl px-5 py-2">Utilities 🔨</code></h1>
+        <h1 className="w-full text-xl text-center mb-7 border-b-2 border-b-slate-500 py-4"><code className="bg-violet-700 rounded-xl px-5 py-2">Utilities 🔨</code></h1>
 
         {/* Stepper and range Wrapper */}
         <div className="w-full flex gap-x-10 flex-col xl:flex-row items-center justify-between">
