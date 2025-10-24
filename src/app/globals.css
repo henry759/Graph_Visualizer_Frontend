@@ -78,3 +78,9 @@ button {
   border-bottom: 1px solid hsl(193, 20%, 55%);
   color: var(--graph-input-header-color-variable);
 }
+
+.saves_wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  gap: 1rem;
+}

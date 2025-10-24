@@ -3,7 +3,12 @@ import { useRef, useState } from "react"
 import FuncGraph from "./FuncGraph";
 import Keyboard from "./Keyboard";
 
-const GetValues = () => {
+type GetProps = {
+  savedOnes: any,
+  setSavedOnes: any,
+}
+
+const GetValues = ({ savedOnes, setSavedOnes }: GetProps) => {
   const [stepper, setStepper] = useState<number>(0.3);
   const [rangeStart, setRangeStart] = useState<number>(-10);
   const [rangeEnd, setRangeEnd] = useState<number>(10);
@@ -64,7 +69,7 @@ const GetValues = () => {
         <button onClick={() => calculateFunction(funcExp)} className="cursor-pointer text-xs md:text-[1rem] border-0 outline-none px-4 py-2 md:px-7 md:py-3 rounded-xl rounded-b-none bg-violet-700"><code><strong>🧮 Calculate</strong></code></button>
       </div>
       <div className="w-full h-full shadow-xl shadow-black/80">
-        <FuncGraph step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
+        <FuncGraph savedOnes={savedOnes} setSavedOnes={setSavedOnes} step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
       </div>
       <div className="shadow-2xl shadow-black/70 w-full flex flex-col items-center justify-between rounded-xl rounded-t-none border-[1px] border-slate-800 px-10 py-10 bg-black/50 backdrop-blur-[10px]">
         {/* Get Length Between Points as an input float number  */}
