@@ -47,6 +47,7 @@ export default function Home() {
   console.log(savedOnes);
 
   const handleDeleteSavedImage = async (id: string) => {
+    if (!userId) return;
     const response = await fetch(`${apiUrl}/images/${id}?user_id=${userId}`, {
       method: "DELETE",
     });
