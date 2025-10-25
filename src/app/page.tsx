@@ -5,13 +5,14 @@ import { IoTrashBinSharp } from "react-icons/io5";
 import GetValues from "@/components/GetValues";
 import { useEffect, useState } from "react";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
   const [savedOnes, setSavedOnes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/images")
+    fetch(`${apiUrl}/images`)
       .then((res) => res.json())
       .then((data) => setSavedOnes(data));
   }, [])
@@ -19,7 +20,7 @@ export default function Home() {
   console.log(savedOnes);
 
   const handleDeleteSavedImage = async (id: string) => {
-    const response = await fetch(`http://localhost:8000/images/${id}`, {
+    const response = await fetch(`${apiUrl}/images/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -29,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="text-white w-full min-h-screen bg-main-background">
-      <div className="relativecontainer mx-auto w-full min-h-screen flex flex-col items-center justify-center px-4 py-4">
+      <div className="relative container mx-auto w-full min-h-screen flex flex-col items-center justify-center px-4 py-4">
         <div className="px-4 py-5 border-[1px] border-slate-900 backdrop-blur-[14px] _bg-cyan-300/40 bg-black/50 rounded-2xl shadow-2xl shadow-black/70">
           <h1 className="font-main text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl w-full _text-cyan-300 block mx-auto text-center mt-0 mb-0 bg-clip-text bg-gradient-to-t from-blue-500 to-rose-500 text-transparent">Graph  Visualizer</h1>
         </div>

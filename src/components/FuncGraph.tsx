@@ -36,6 +36,8 @@ const generateData = (theXVal: number, expr: string, xRange: [number, number], s
   return { labels, yValues };
 }
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
 // Component Starts...
 const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: FunctionGraphProps) => {
   const { labels, yValues } = generateData(theXVal, expr, xRange, step);
@@ -79,7 +81,7 @@ const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: Fun
       console.log(canvas);
       const myImageBase64 = canvas.toDataURL('image/png');
       console.log("My Fricking image base 64 is: ", myImageBase64)
-      const response = await fetch("http://localhost:8000/images", {
+      const response = await fetch(`${apiUrl}/images`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +92,7 @@ const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: Fun
       });
 
       if (response.ok) {
-        const updatedList = await fetch("http://localhost:8000/images");
+        const updatedList = await fetch(`${apiUrl}/images`);
         const data = await updatedList.json();
         setSavedOnes(data);
       }
