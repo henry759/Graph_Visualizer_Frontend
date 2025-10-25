@@ -7,8 +7,13 @@ import { useEffect, useState } from "react";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+type SavedOne = {
+  id: string;
+  image_url: string;
+}
+
 export default function Home() {
-  const [savedOnes, setSavedOnes] = useState([]);
+  const [savedOnes, setSavedOnes] = useState<SavedOne[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
