@@ -15,6 +15,7 @@ type SavedOne = {
 }
 
 type FunctionGraphProps = {
+  userId: string;
   savedOnes: SavedOne[];
   setSavedOnes: React.Dispatch<React.SetStateAction<SavedOne[]>>;
   step: number;
@@ -44,7 +45,7 @@ const generateData = (theXVal: number, expr: string, xRange: [number, number], s
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 // Component Starts...
-const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: FunctionGraphProps) => {
+const FuncGraph = ({ userId, savedOnes, setSavedOnes, theXVal, step, xRange, expr }: FunctionGraphProps) => {
   const { labels, yValues } = generateData(theXVal, expr, xRange, step);
   const options = {
     scales: {
@@ -94,11 +95,12 @@ const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: Fun
         },
         body: JSON.stringify({
           image_url: myImageBase64,
+          user_id: userId,
         })
       });
 
       if (response.ok) {
-        const updatedList = await fetch(`${apiUrl}/images`);
+        const updatedList = await fetch(`${apiUrl}/images?user_id=${userId}`);
         const data = await updatedList.json();
         setSavedOnes(data);
       }

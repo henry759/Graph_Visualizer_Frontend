@@ -5,6 +5,9 @@ import { IoTrashBinSharp } from "react-icons/io5";
 import GetValues from "@/components/GetValues";
 import { useEffect, useState } from "react";
 
+const userId = localStorage.getItem("user_id") || crypto.randomUUID();
+localStorage.setItem("user_id", userId);
+
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 type SavedOne = {
@@ -15,17 +18,27 @@ type SavedOne = {
 export default function Home() {
   const [savedOnes, setSavedOnes] = useState<SavedOne[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`${apiUrl}/images`)
-      .then((res) => res.json())
-      .then((data) => setSavedOnes(data));
+    const fetchImages = async () => {
+      try {
+        const res = await fetch(`${apiUrl}/images?user_id=${userId}`);
+        const data = await res.json();
+        setSavedOnes(data);
+      } catch (err) {
+        console.log("FetchErropr", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchImages();
   }, [])
 
   console.log(savedOnes);
 
   const handleDeleteSavedImage = async (id: string) => {
-    const response = await fetch(`${apiUrl}/images/${id}`, {
+    const response = await fetch(`${apiUrl}/images/${id}?user_id=${userId}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -39,7 +52,7 @@ export default function Home() {
         <div className="px-4 py-5 border-[1px] border-slate-900 backdrop-blur-[14px] _bg-cyan-300/40 bg-black/50 rounded-2xl shadow-2xl shadow-black/70">
           <h1 className="font-main text-5xl md:text-5xl xl:text-6xl 2xl:text-7xl w-full _text-cyan-300 block mx-auto text-center mt-0 mb-0 bg-clip-text bg-gradient-to-t from-blue-500 to-rose-500 text-transparent">Graph  Visualizer</h1>
         </div>
-        <GetValues savedOnes={savedOnes} setSavedOnes={setSavedOnes} />
+        <GetValues userId={userId} savedOnes={savedOnes} setSavedOnes={setSavedOnes} />
         {/* Saved Graphs */}
         <button onClick={() => setIsMenuOpen(prev => !prev)} className="absolute bg-white/80 _invert top-[1rem] right-[1rem] px-7 py-7 z-20 text-black _bg-black/30 _backdrop-blur-sm rounded-2xl _mix-blend-lighten overflow-hidden _text-white">
           <LuSquareMenu />
