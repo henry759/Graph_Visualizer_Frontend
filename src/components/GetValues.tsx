@@ -77,7 +77,7 @@ const GetValues = ({ userId, savedOnes, setSavedOnes }: GetProps) => {
       <div className="w-full h-full shadow-xl shadow-black/80">
         <FuncGraph userId={userId} savedOnes={savedOnes} setSavedOnes={setSavedOnes} step={stepper} xRange={[rangeStart, rangeEnd]} expr={realExpr} theXVal={theX} />
       </div>
-      <div className="shadow-2xl shadow-black/70 w-full flex flex-col items-center justify-between rounded-xl rounded-t-none border-[1px] border-slate-800 px-10 py-10 bg-black/50 backdrop-blur-[10px]">
+      <div className="shadow-2xl shadow-black/70 w-full flex flex-col items-center justify-between rounded-xl rounded-t-none border-[1px] border-slate-800 px-10 py-10 bg-black/50 _backdrop-blur-[10px]">
         {/* Get Length Between Points as an input float number  */}
         <h1 className="w-full text-[0.8rem] md:text-[1rem] text-center mb-7 border-b-2 border-b-slate-500 py-4"><code className="bg-violet-700 rounded-xl px-5 py-2">Utilities 🔨</code></h1>
 

@@ -114,7 +114,7 @@ const FuncGraph = ({ userId, savedOnes, setSavedOnes, theXVal, step, xRange, exp
     <div className="w-full h-full">
       <div className="relative w-full h-full rounded-b-none rounded-xl bg-gray-900 p-5">
         <Line ref={lineRef} options={options} data={funcData} />
-        <button onClick={handleSaveGraph} className="absolute top-0 left-0 px-6 py-2 xl:px-12 xl:py-6 rounded-[0.3rem] xl:rounded-[1rem] shadow-xl bg-teal-600/20 z-20 backdrop-blur-xs font-bold">Save Graph</button>
+        <button onClick={handleSaveGraph} className="absolute top-0 left-0 px-6 py-2 xl:px-12 xl:py-6 rounded-[0.3rem] xl:rounded-[1rem] shadow-xl bg-teal-800/70 z-20 _backdrop-blur-xs font-bold">Save Graph</button>
       </div>
     </div>
   )
