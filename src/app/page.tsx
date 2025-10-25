@@ -71,7 +71,7 @@ export default function Home() {
             Saves
           </h1>
           <ul className="saves_wrapper gap-y-5 _grid-cols-subgrid xl:gap-y-10 _flex-col _items-center _justify-start">
-            {
+            {loading ? <h1 className="text-white text-4xl">Loading...</h1> :
               savedOnes.map((graph, idx) => (
                 <div key={graph.id} className="w-auto h-auto">
                   <div className="w-full relative block rounded-lg xl:rounded-2xl border-2 border-slate-600">
