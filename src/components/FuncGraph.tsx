@@ -9,9 +9,14 @@ import Image from "next/image";
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale);
 
+type SavedOne = {
+  id: string;
+  image_url: string;
+}
+
 type FunctionGraphProps = {
-  savedOnes: any;
-  setSavedOnes: any;
+  savedOnes: SavedOne[];
+  setSavedOnes: React.Dispatch<React.SetStateAction<SavedOne[]>>;
   step: number;
   xRange: [number, number];
   expr: string;

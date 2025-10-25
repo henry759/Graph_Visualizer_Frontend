@@ -3,9 +3,14 @@ import { useRef, useState } from "react"
 import FuncGraph from "./FuncGraph";
 import Keyboard from "./Keyboard";
 
+type SavedOne = {
+  id: string;
+  image_url: string;
+}
+
 type GetProps = {
-  savedOnes: any,
-  setSavedOnes: any,
+  savedOnes: SavedOne[],
+  setSavedOnes: React.Dispatch<React.SetStateAction<SavedOne[]>>,
 }
 
 const GetValues = ({ savedOnes, setSavedOnes }: GetProps) => {
