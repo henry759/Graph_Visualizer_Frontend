@@ -9,7 +9,7 @@ type SavedOne = {
 }
 
 type GetProps = {
-  userId: string
+  userId: string | null
   savedOnes: SavedOne[],
   setSavedOnes: React.Dispatch<React.SetStateAction<SavedOne[]>>,
 }

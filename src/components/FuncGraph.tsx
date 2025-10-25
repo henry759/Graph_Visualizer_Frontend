@@ -15,7 +15,7 @@ type SavedOne = {
 }
 
 type FunctionGraphProps = {
-  userId: string;
+  userId: string | null;
   savedOnes: SavedOne[];
   setSavedOnes: React.Dispatch<React.SetStateAction<SavedOne[]>>;
   step: number;
