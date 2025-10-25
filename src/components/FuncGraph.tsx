@@ -77,7 +77,8 @@ const FuncGraph = ({ savedOnes, setSavedOnes, theXVal, step, xRange, expr }: Fun
     ],
   };
 
-  const lineRef = useRef(null);
+  const lineRef = useRef<ChartJS<'line'> | null>(null);
+  // const lineRef = useRef<HTMLCanvasElement | null>(null);
 
   async function handleSaveGraph() {
     const lineEl = lineRef.current
