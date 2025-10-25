@@ -5,9 +5,6 @@ import { IoTrashBinSharp } from "react-icons/io5";
 import GetValues from "@/components/GetValues";
 import { useEffect, useState } from "react";
 
-const userId = localStorage.getItem("user_id") || crypto.randomUUID();
-localStorage.setItem("user_id", userId);
-
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 type SavedOne = {
@@ -19,8 +16,20 @@ export default function Home() {
   const [savedOnes, setSavedOnes] = useState<SavedOne[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [userId, setUserId] = useState<string | null>(null);
+
 
   useEffect(() => {
+    let storedId = localStorage.getItem("user_id");
+    if (!storedId) {
+      storedId = crypto.randomUUID();
+      localStorage.setItem("user_id", storedId);
+    }
+    setUserId(storedId);
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
     const fetchImages = async () => {
       try {
         const res = await fetch(`${apiUrl}/images?user_id=${userId}`);
@@ -33,7 +42,7 @@ export default function Home() {
       }
     }
     fetchImages();
-  }, [])
+  }, [userId])
 
   console.log(savedOnes);
 
