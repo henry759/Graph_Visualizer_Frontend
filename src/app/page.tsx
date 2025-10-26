@@ -68,17 +68,18 @@ export default function Home() {
         <button onClick={() => setIsMenuOpen(prev => !prev)} className="absolute bg-white/80 _invert top-[1rem] right-[1rem] px-7 py-7 z-20 text-black _bg-black/30 _backdrop-blur-sm rounded-2xl _mix-blend-lighten overflow-hidden _text-white">
           <LuSquareMenu />
         </button>
-        <div style={isMenuOpen ? { right: 0 } : { right: "100%" }} className="border-2 border-slate-300/20 rounded-l-xl fixed top-0 right-0 bg-black/85 w-1/2 h-screen overflow-scroll _backdrop-blur-2xl _mix-blend-hard-light px-10 py-8 shodow-xl _shadow-inner shadow-black/50 z010">
+        {/* Menu */}
+        <div style={isMenuOpen ? { right: 0 } : { right: "100%" }} className="border-2 border-slate-300/20 rounded-l-xl fixed top-0 right-0 bg-black/85 w-2/3 xl:w-1/2 h-screen overflow-scroll flex flex-col px-10 py-8 z-10">
           <h1 className="w-full block text-center _font-main text-2xl mb-10 md:text-4xl xl:5xl">
             Saves
             <hr />
           </h1>
-          <ul className="saves_wrapper gap-y-5 _grid-cols-subgrid xl:gap-y-10 _flex-col _items-center _justify-start">
+          <ul className="saves_wrapper gap-y-5 xl:gap-y-10">
             {loading ? <h1 className="text-white text-4xl">Loading...</h1> :
               savedOnes.map((graph) => (
-                <div key={graph.id} className="w-auto h-auto">
-                  <div className="w-full relative block rounded-lg xl:rounded-2xl border-2 border-slate-600">
-                    <Image className="w-full h-full overflow-hidden" width={200} height={200} src={graph.image_url} alt="Saved Graph" />
+                <div key={graph.id} className="w-full aspect-video">
+                  <div className="w-full h-full relative rounded-lg xl:rounded-2xl border-2 border-slate-600">
+                    <Image className="w-full h-full overflow-hidden object-contain" width={200} height={200} src={graph.image_url} alt="Saved Graph" />
                   </div>
                   <button onClick={() => handleDeleteSavedImage(graph.id)} className="text-4xl">
                     <IoTrashBinSharp />
