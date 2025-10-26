@@ -77,9 +77,9 @@ export default function Home() {
           <ul className="saves_wrapper gap-y-5 xl:gap-y-10">
             {loading ? <h1 className="text-white text-4xl">Loading...</h1> :
               savedOnes.map((graph) => (
-                <div key={graph.id} className="w-full aspect-video">
-                  <div className="w-full h-full relative rounded-lg xl:rounded-2xl border-2 border-slate-600">
-                    <Image className="w-full h-full overflow-hidden object-contain" width={200} height={200} src={graph.image_url} alt="Saved Graph" />
+                <div key={graph.id} className="w-full h-auto _aspect-video">
+                  <div className="w-full aspect-video _h-[5rem] _xl:h-[10rem] relative rounded-lg xl:rounded-2xl border-2 border-slate-600">
+                    <Image className="w-full h-full" fill={true} src={graph.image_url} alt="Saved Graph" />
                   </div>
                   <button onClick={() => handleDeleteSavedImage(graph.id)} className="text-4xl">
                     <IoTrashBinSharp />
